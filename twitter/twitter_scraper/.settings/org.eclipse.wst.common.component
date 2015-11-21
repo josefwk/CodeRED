@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="twitter_scraper">
+        <wb-resource deploy-path="/" source-path="/WebContent"/>
+        <property name="context-root" value="twitter_scraper"/>
+    </wb-module>
+</project-modules>
