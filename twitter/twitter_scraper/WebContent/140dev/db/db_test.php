@@ -12,7 +12,15 @@ require_once('db_lib.php');
 $oDB = new db;
 print '<strong>Twitter Database Tables</strong><br />';
 $result = $oDB->select('SHOW TABLES');
+?>
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<?php
 while ($row = mysqli_fetch_row($result)) {
   print $row[0] . '<br />';
 }
 ?>
+</body>
+</html>

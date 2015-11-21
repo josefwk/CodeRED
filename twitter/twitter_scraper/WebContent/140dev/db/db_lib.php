@@ -17,7 +17,7 @@ class db
   // Create a database connection for use by all functions in this class
   function __construct() {
 
-    require_once('db_config.php');
+    require('db_config.php');
     
     if($this->dbh = mysqli_connect($db_host, 
       $db_user, $db_password, $db_name)) { 
@@ -36,6 +36,9 @@ class db
     }
         
     date_default_timezone_set(TIME_ZONE);
+    
+    if(is_null($this->dbh))
+    	echo("DATABSE CONNECTION NULL\n");
   }
   
   // Call this after each DB request to test for and log errors
@@ -94,6 +97,7 @@ class db
   // Add a row to any table
   public function insert($table,$field_values) {
     $query = 'INSERT INTO ' . $table . ' SET ' . $field_values;
+    echo $query ."\n";
     mysqli_query($this->dbh,$query);
     $this->error_test('insert',$query);
   }
