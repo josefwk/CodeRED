@@ -5,7 +5,7 @@ class HeatmapView{
 	<!DOCTYPE html>
 	<html>
 		<?php MasterView::insertHead(); ?>
-		<body onload="window.setInterval(ajaxGetNewLocationData, 1000);">
+		<body onload="window.setInterval(ajaxGetNewLocationData, 250);">
 			<?php HeatmapController::insertHeatmap(); ?>
 			<div id="map" class="jumbotron"></div>
 			<div class="container-fluid">

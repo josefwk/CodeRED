@@ -2,7 +2,7 @@
 class HeatmapController {
 	public static function insertHeatmap() {
 		?>
-		<script>
+<script>
 		var map, heatmap;
 		var gradient = [
 			'rgba(0, 255, 255, 0)',
@@ -58,21 +58,20 @@ class HeatmapController {
 		  xhttp.send();
 			  for(a = heatmap.data.length-1; a >= 0 ; a--) {
 				  heatmap.data.setAt(a,{location: heatmap.data.getAt(a).location, weight: heatmap.data.getAt(a).weight-.05});
-  				  if(heatmap.data.getAt(a).weight<0.31){
+  				  if(heatmap.data.getAt(a).weight<0.01){
 					  heatmap.data.setAt(a,null);
 				  }
 			  }
 		}
 		</script>
-		<?php
+<?php
 	}
-	
 	public static function insertHeatmapCallback() {
 		?>
-		<script async defer
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5i6slOPeFAVPgQX250x20f8G51D9nsns&signed_in=true&libraries=visualization&callback=initMap">
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5i6slOPeFAVPgQX250x20f8G51D9nsns&signed_in=true&libraries=visualization&callback=initMap">
 		</script>
-		<?php
+<?php
 	}
 }
 
