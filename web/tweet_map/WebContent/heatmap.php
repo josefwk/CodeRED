@@ -78,6 +78,7 @@ function initMap() {
     map: map,
     gradient: gradient
   });
+  repeatPoll();
 }
 
 function toggleHeatmap() {
@@ -100,6 +101,15 @@ function changeOpacity() {
 // Heatmap data: 500 Points
 function getPoints() {
   return [];
+}
+
+function repeatPoll() {
+	setTimeout(repeatPoll(), 1000);
+	poll();
+}
+
+function poll() {
+	// Put the database polling query in this function
 }
 
     </script>
