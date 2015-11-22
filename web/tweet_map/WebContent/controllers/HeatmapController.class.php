@@ -23,6 +23,9 @@ class HeatmapController {
 			'rgba(191, 0, 31, 1)',
 			'rgba(255, 0, 0, 1)'
 		];
+		var timeVariable = new Date();
+		var myTimeRangeVal = new Date();
+		var myTimeScaleVal;
 		
 		function initMap() {
 			map = new google.maps.Map(document.getElementById('map'), {
@@ -40,8 +43,8 @@ class HeatmapController {
 		}
 		
 		
-		function addPoint(lat, lng, t) {
-			heatmap.data.push({location: new google.maps.LatLng(lat, lng), time: t, weight: t});
+		function addPoint(lat, lng, t, wght) {
+			heatmap.data.push({location: new google.maps.LatLng(lat, lng), time: t, weight: wght});
 		}
 
 		function ajaxGetNewLocationData(){
@@ -54,15 +57,25 @@ class HeatmapController {
 					locs = xhttp.responseText.split(" ");
 					for(i = 0; i < locs.length; i++){	
 						latlng = locs[i].split(",");
-						addPoint(latlng[0], latlng[1], 10);
+						addPoint(latlng[0], latlng[1], latlng[2], 10);
 					}
 
 				}
 			};
+
+			if(document.getElementById("myTimeRange").value!=timeVariable.parse()){
+				timeVariable.setTime(document.getElementById("myTimeRange").value);
+				heatmap.data=[];
+			}
+			myTimeScaleVal=document.getElementById("myTimeScale").value;
+			myTimeRangeVal+=document.getElementById("myTimeScale").value;
+			timeVariable=myTimeRangeVal.toDate();
+			document.getElementById("myTimeRange").max+=myTimeScaleVal;
+			document.getElementById("myTimeRange").stepUp(myTimeScaleVal);
 		  xhttp.open('GET', '/tweet_map/controllers/new_data_points.php', true);
 		  xhttp.send();
 			  for(a = heatmap.data.length-1; a >= 0 ; a--) {
-				  heatmap.data.setAt(a,{location: heatmap.data.getAt(a).location, time: heatmap.data.getAt(a).time - (1/5), weight: heatmap.data.getAt(a).time});
+				  heatmap.data.setAt(a,{location: heatmap.data.getAt(a).location, time: heatmap.data.getAt(a).time, weight: heatmap.data.getAt(a).weight - (1/5)});
   				  if(heatmap.data.getAt(a).weight < 0.1){
 					  heatmap.data.setAt(a,null);
 				  }

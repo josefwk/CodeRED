@@ -13,6 +13,13 @@ class HeatmapView{
 				<div id="text"></div>
 			</div>
 			<?php HeatmapController::insertHeatmapCallback(); ?>
+Time
+<input type="range" id="myTimeRange" min=timeVariable max=timeVariable>
+
+Speed
+<input type="range" id="myTimeRange" min=1 max=3600 defaultValue=1>
+
+			
 		</body>
 	</html>
 	<?php
