@@ -16,13 +16,13 @@
 	###(SECTION) Redirect
 	switch($control){
 		case "hashtag":
-			
+			HashtagView::show(null);
 			break;
 		case "heatmap":
-			
+			HeatmapView::show(null);
 			break;
 		default:
-			HashtagView::show(null);
+			HeatmapView::show(null);
 	};
 	###(ENDSECTION) Redirect
 ?>
