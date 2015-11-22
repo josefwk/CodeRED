@@ -96,8 +96,8 @@ function changeRadius() {
 }
 
 function changeOpacity() { 
-	for(a = heatmap.data.getLength(); a > 0 ; a--) {
-		heatmap.data.getAt(a).weight-=0.3;
+	for(a = heatmap.getData.getLength(); a > 0 ; a--) {
+		heatmap.getData()[a].weight -= .3;
 		if(heatmap.data.getAt(a).weight<0.31){
 			heatmap.data.splice(a,1);
 		}
