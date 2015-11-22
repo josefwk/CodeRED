@@ -68,10 +68,10 @@ class HeatmapController {
 				heatmap.data=[];
 			}
 			myTimeScaleVal=document.getElementById("myTimeScale").value;
-			myTimeRangeVal+=document.getElementById("myTimeScale").value;
+			myTimeRangeVal.setTime(myTimeRangeVal.parse()+document.getElementById("myTimeScale").value);
 			timeVariable=myTimeRangeVal.toDate();
-			document.getElementById("myTimeRange").max+=myTimeScaleVal;
-			document.getElementById("myTimeRange").stepUp(myTimeScaleVal);
+			document.getElementById("myTimeRange").max+=1000;
+			document.getElementById("myTimeRange").value=myTimeRangeVal.parse()+myTimeScaleVal;
 		  xhttp.open('GET', '/tweet_map/controllers/new_data_points.php', true);
 		  xhttp.send();
 			  for(a = heatmap.data.length-1; a >= 0 ; a--) {
