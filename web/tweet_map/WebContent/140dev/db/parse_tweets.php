@@ -11,6 +11,10 @@ require_once('140dev_config.php');
 require_once('db_lib.php');
 $oDB = new db;
 
+$defaultTimeZone='UTC';
+if(date_default_timezone_get()!=$defaultTimeZone) 
+	date_default_timezone_set($defaultTimeZone);
+
 // This should run continuously as a background process
 while (true) {
 
@@ -74,7 +78,8 @@ while (true) {
       'location = "' . $oDB->escape($user_object->location) . '", ' . 
       'url = "' . $user_object->url . '", ' .
       'description = "' . $oDB->escape($user_object->description) . '", ' .
-      'created_at = "' . $oDB->date($user_object->created_at) . '", ' .
+    //  'created_at = "' . $oDB->date($user_object->created_at) . '", ' .
+    	'created_at = CURRENT_TIMESTAMP, ' .
       'followers_count = ' . $user_object->followers_count . ', ' .
       'friends_count = ' . $user_object->friends_count . ', ' .
       'statuses_count = ' . $user_object->statuses_count . ', ' . 

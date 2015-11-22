@@ -1,8 +1,11 @@
 <?php
 class HeatmapController {
+
+
 	public static function insertHeatmap() {
 		?>
 <script>
+
 		var map, heatmap;
 		var gradient = [
 			'rgba(0, 255, 255, 0)',
@@ -31,13 +34,14 @@ class HeatmapController {
 			heatmap = new google.maps.visualization.HeatmapLayer({
 				data: [],
 				map: map,
-				gradient: gradient
+				gradient: gradient,
+				radius: 5
 			});
 		}
 		
 		
-		function addPoint(lat, lng) {
-			heatmap.data.push({location: new google.maps.LatLng(lat, lng), weight: .5});
+		function addPoint(lat, lng, t) {
+			heatmap.data.push({location: new google.maps.LatLng(lat, lng), time: t, weight: t});
 		}
 
 		function ajaxGetNewLocationData(){
@@ -50,15 +54,16 @@ class HeatmapController {
 					locs = xhttp.responseText.split(" ");
 					for(i = 0; i < locs.length; i++){	
 						latlng = locs[i].split(",");
-						addPoint(latlng[0], latlng[1]);
+						addPoint(latlng[0], latlng[1], 10);
 					}
+
 				}
 			};
 		  xhttp.open('GET', '/tweet_map/controllers/new_data_points.php', true);
 		  xhttp.send();
 			  for(a = heatmap.data.length-1; a >= 0 ; a--) {
-				  heatmap.data.setAt(a,{location: heatmap.data.getAt(a).location, weight: heatmap.data.getAt(a).weight-.05});
-  				  if(heatmap.data.getAt(a).weight<0.01){
+				  heatmap.data.setAt(a,{location: heatmap.data.getAt(a).location, time: heatmap.data.getAt(a).time - (1/5), weight: heatmap.data.getAt(a).time});
+  				  if(heatmap.data.getAt(a).weight < 0.1){
 					  heatmap.data.setAt(a,null);
 				  }
 			  }

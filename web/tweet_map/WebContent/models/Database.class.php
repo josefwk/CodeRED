@@ -1,7 +1,7 @@
 <?php
 class Database {
     private static $database;
-	private static $dsn = 'mysql:host=localhost;dbname=';
+	private static $dsn = 'mysql:host=127.0.0.1;dbname=';
 	private static $databaseName;
 	private static $options = 
 	   array (PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
@@ -10,8 +10,8 @@ class Database {
 		if (!isset (self::$database) || self::$database == null) {
 			try {
 				$databaseName = 'tweetview';
-				$username = 'tweetview';
-				$password = 'hello';
+				$username = 'root';
+				$password = 'rootjwk';
 				self::$databaseName = $databaseName;
 				$dbspec = self::$dsn.self::$databaseName.";charset=utf8";
 				self::$database = new PDO ($dbspec, $username, $password, self::$options);

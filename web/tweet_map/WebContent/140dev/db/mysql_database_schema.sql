@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `json_cache` (
 CREATE TABLE IF NOT EXISTS `tweets` (
   `tweet_id` bigint(20) unsigned NOT NULL,
   `tweet_text` varchar(160) NOT NULL,
-  `created_at` datetime NOT NULL,
+  `created_at` timestamp NOT NULL,
   `geo_lat` decimal(10,5) DEFAULT NULL,
   `geo_long` decimal(10,5) DEFAULT NULL,
   `user_id` bigint(20) unsigned NOT NULL,
