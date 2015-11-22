@@ -74,11 +74,13 @@ function initMap() {
   });
 
   heatmap = new google.maps.visualization.HeatmapLayer({
-    data: getPoints(),
+    data: [],
     map: map,
     gradient: gradient
   });
-  repeatPoll();
+  for(a = 0; a < 5; a++){
+    addPoint(37.782551+(a*.1), -122.445368+(a*.1));
+  }
 }
 
 function toggleHeatmap() {
@@ -91,25 +93,19 @@ function changeGradient() {
 
 function changeRadius() {
   heatmap.set('radius', heatmap.get('radius') ? null : 20);
-  heatmap.data.push(new google.maps.LatLng(37.782551, -122.445368));
 }
 
-function changeOpacity() {
-  heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
+function changeOpacity() { 
+	for(a = heatmap.data.getLength(); a > 0 ; a--) {
+		heatmap.data.getAt(a).weight-=0.3;
+		if(heatmap.data.getAt(a).weight<0.31){
+			heatmap.data.splice(a,1);
+		}
+	}
 }
 
-// Heatmap data: 500 Points
-function getPoints() {
-  return [];
-}
-
-function repeatPoll() {
-	setTimeout(repeatPoll(), 1000);
-	poll();
-}
-
-function poll() {
-	// Put the database polling query in this function
+function addPoint(lat, lng) {
+	heatmap.data.push({location: new google.maps.LatLng(lat, lng), weight: 20});
 }
 
     </script>

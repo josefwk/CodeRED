@@ -53,13 +53,7 @@ class HeatmapController {
 			    }
 			  };
 			  xhttp.open('GET', '/tweet_map/controllers/new_data_points.php', true);
-			  xhttp.send(); 
-				for(a = heatmap.data.length(); a > 0 ; a--) {
-					heatmap.data[a].weight-=0.3;
-					if(heatmap.data[a].weight<0.31){
-						heatmap.data.splice(a,1);
-					}
-				}
+			  xhttp.send();
 		}
 		</script>
 <?php
