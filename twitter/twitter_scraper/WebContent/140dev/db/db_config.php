@@ -8,7 +8,7 @@
 * @license GNU Public License
 * @version BETA 0.30
 */
-  $db_host = 'localhost';
+  $db_host = '127.0.0.1';
   $db_user = 'tweetview';
   $db_password = 'hello';
   $db_name = 'tweetview'; 

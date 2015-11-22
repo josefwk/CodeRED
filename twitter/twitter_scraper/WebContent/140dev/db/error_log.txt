@@ -9,3 +9,4 @@ Sat, 21 Nov 15 22:04:25 +0000 | get_tweets.php -> __construct | Unable to connec
 Sat, 21 Nov 15 22:12:12 +0000 | get_tweets.php -> __construct | Unable to connect to DB | attempted connection to tweetview
 Sat, 21 Nov 15 22:19:19 +0000 | get_tweets.php -> __construct | Unable to connect to DB | attempted connection to tweetview
 Sat, 21 Nov 15 22:19:29 +0000 | parse_tweets.php -> __construct | Unable to connect to DB | attempted connection to tweetview
+Sun, 22 Nov 15 00:43:03 +0000 | get_tweets.php -> __construct | Unable to connect to DB | attempted connection to tweetview
