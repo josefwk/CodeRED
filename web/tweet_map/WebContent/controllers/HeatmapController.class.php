@@ -35,7 +35,7 @@ class HeatmapController {
 		
 		
 		function addPoint(lat, lng) {
-			heatmap.data.push(new google.maps.LatLng(lat, lng));
+			heatmap.data.push({location: new google.maps.LatLng(lat, lng), weight: 20});
 		}
 
 		function ajaxGetNewLocationData(){
@@ -54,6 +54,14 @@ class HeatmapController {
 			  };
 			  xhttp.open('GET', '/tweet_map/controllers/new_data_points.php', true);
 			  xhttp.send(); 
+				var newPoints = [];
+				for(a in heatmap.data) {
+					heatmap.data[a].weight-=0.3;
+					if(heatmap.data[a].weight>0.31){
+						newPoints.push(heatmap.data[a]);
+					}
+				}
+				heatmap.setData(newPoints);
 		}
 		</script>
 <?php
