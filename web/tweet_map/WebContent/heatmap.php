@@ -40,7 +40,7 @@
     </style>
   </head>
 
-  <body>
+  <body onload="setInterval(changeOpacity,1000);">
     <div id="floating-panel">
       <button onclick="toggleHeatmap()">Toggle Heatmap</button>
       <button onclick="changeGradient()">Change gradient</button>
@@ -79,7 +79,7 @@ function initMap() {
     gradient: gradient
   });
   for(a = 0; a < 5; a++){
-    addPoint(37.782551+(a*.1), -122.445368+(a*.1));
+    addPoint(37.782551+(a*.1), -122.445368+(a*.1), a);
   }
 }
 
@@ -96,16 +96,16 @@ function changeRadius() {
 }
 
 function changeOpacity() { 
-	for(a = heatmap.data.getLength(); a > 0 ; a--) {
-		heatmap.data.getAt(a).weight-=0.3;
+	for(a = heatmap.data.length-1; a >= 0 ; a--) {
+		heatmap.data.setAt(a,{location: heatmap.data.getAt(a).location, weight: heatmap.data.getAt(a).weight-.5});
 		if(heatmap.data.getAt(a).weight<0.31){
-			heatmap.data.splice(a,1);
+			heatmap.data.setAt(a,null);
 		}
 	}
 }
 
-function addPoint(lat, lng) {
-	heatmap.data.push({location: new google.maps.LatLng(lat, lng), weight: 20});
+function addPoint(lat, lng, wgt) {
+	heatmap.data.push({location: new google.maps.LatLng(lat, lng), weight: wgt*2});
 }
 
     </script>

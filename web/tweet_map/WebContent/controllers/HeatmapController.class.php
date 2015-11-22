@@ -54,6 +54,12 @@ class HeatmapController {
 			  };
 			  xhttp.open('GET', '/tweet_map/controllers/new_data_points.php', true);
 			  xhttp.send();
+			  for(a = heatmap.data.length-1; a >= 0 ; a--) {
+				  heatmap.data.setAt(a,{location: heatmap.data.getAt(a).location, weight: heatmap.data.getAt(a).weight-.5});
+  				  if(heatmap.data.getAt(a).weight<0.31){
+					  heatmap.data.setAt(a,null);
+				  }
+			  }
 		}
 		</script>
 <?php
