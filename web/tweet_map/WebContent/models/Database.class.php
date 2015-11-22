@@ -11,7 +11,7 @@ class Database {
 			try {
 				$databaseName = 'tweetview';
 				$username = 'tweetview';
-				$password = '11orange';
+				$password = 'hello';
 				self::$databaseName = $databaseName;
 				$dbspec = self::$dsn.self::$databaseName.";charset=utf8";
 				self::$database = new PDO ($dbspec, $username, $password, self::$options);

@@ -2,7 +2,7 @@
 class LocationDatabase{
 	
 	public static function getAllLocations(){
-		$selectQuery = "SELECT `geo_lat`,`geo_long` from `tweets`";
+		$selectQuery = "SELECT `geo_lat`,`geo_long` from `tweets` WHERE `geo_lat`!=0 AND `geo_long`!=0";
 		try{
 			# Get Database
 			$db = Database::getDB ();
