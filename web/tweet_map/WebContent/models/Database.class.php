@@ -10,8 +10,8 @@ class Database {
 		if (!isset (self::$database) || self::$database == null) {
 			try {
 				$databaseName = 'tweetview';
-				$username = 'root';
-				$password = 'rootjwk';
+				$username = 'tweetview';
+				$password = 'hello';
 				self::$databaseName = $databaseName;
 				$dbspec = self::$dsn.self::$databaseName.";charset=utf8";
 				self::$database = new PDO ($dbspec, $username, $password, self::$options);

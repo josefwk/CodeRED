@@ -9,6 +9,7 @@ class MasterView{
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 			<link rel="stylesheet" href="/tweet_map/css/Heatmap.css">
+			<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		</head>
@@ -17,7 +18,9 @@ class MasterView{
 	
 	public static function insertNavbar(){
 		?>
-		<nav></nav>
+		<nav class="navbar navbar-inverse">
+			<h3>TweetView</h3>
+		</nav>
 		<?php	
 	}
 }
