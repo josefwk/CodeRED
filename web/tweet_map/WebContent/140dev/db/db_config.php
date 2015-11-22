@@ -14,5 +14,5 @@
   $db_name = 'tweetview'; 
 	
 	// MySQL time zone setting to normalize dates
-	define('TIME_ZONE','America/Chicago');
+	define('TIME_ZONE','US/CENTRAL');
 ?> 

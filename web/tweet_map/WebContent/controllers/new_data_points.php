@@ -1,7 +1,7 @@
 <?php
 require_once '../models/Database.class.php';
 
-$selectQuery = "SELECT `geo_lat`,`geo_long` from `tweets` WHERE `geo_lat`!=0 AND `geo_long`!=0 AND `created_at`>=(NOW() - INTERVAL 1 SECOND)";
+$selectQuery = "SELECT `geo_lat`,`geo_long` from `tweets` WHERE `geo_lat`!=0 AND `geo_long`!=0 AND `created_at`>=(NOW() + INTERVAL 1 HOUR - INTERVAL 1 SECOND)";
 
 # Get Database
 $db = Database::getDB ();
