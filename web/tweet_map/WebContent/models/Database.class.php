@@ -26,5 +26,6 @@ class Database {
 	public static function clearDB() {
 		self::$database = null;
 	}
+	
 }
 ?>

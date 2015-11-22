@@ -24,6 +24,6 @@ class LocationDatabase{
 		$value = stripslashes ($value);
 		$value = htmlspecialchars ($value);
 		return $value;
-	}	
+	}
 }
 ?>

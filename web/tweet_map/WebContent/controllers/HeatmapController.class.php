@@ -1,8 +1,8 @@
-<?php 
-class HeatmapController{
-	public static function insertHeatmap(){
+<?php
+class HeatmapController {
+	public static function insertHeatmap() {
 		?>
-		<script>
+<script>
 		var map, heatmap;
 		var gradient = [
 				'rgba(0, 0, 0, 0)',
@@ -26,27 +26,44 @@ class HeatmapController{
 				mapTypeId: google.maps.MapTypeId.SATELLITE
 			});
 		
-				heatmap = new google.maps.visualization.HeatmapLayer({
-					data: [],
-					map: map,
-					gradient: gradient
-				});
+			heatmap = new google.maps.visualization.HeatmapLayer({
+				data: [],
+				map: map,
+				gradient: gradient
+			});
 		}
 		
 		
 		function addPoint(lat, lng) {
-			heatmap.data.push(new google.maps.LatLng(lat, long));
+			heatmap.data.push(new google.maps.LatLng(lat, lng));
+		}
+
+		function ajaxGetNewLocationData(){
+			var xhttp = new XMLHttpRequest();
+			var locs;
+			var latlng;
+			var i;
+			  xhttp.onreadystatechange = function() {
+			    if (xhttp.readyState == 4 && xhttp.status == 200) {
+				  locs = xhttp.responseText.split(" ");
+				  for(i = 0; i < locs.length; i++){	
+					  latlng = locs[i].split(",");
+					  addPoint(latlng[0], latlng[1]);
+				  }
+			    }
+			  };
+			  xhttp.open('GET', '/tweet_map/controllers/new_data_points.php', true);
+			  xhttp.send(); 
 		}
 		</script>
-		<?php
+<?php
 	}
-	
-	public static function insertHeatmapCallback(){
+	public static function insertHeatmapCallback() {
 		?>
-		<script async defer
-        	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5i6slOPeFAVPgQX250x20f8G51D9nsns&signed_in=true&libraries=visualization&callback=initMap">
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5i6slOPeFAVPgQX250x20f8G51D9nsns&signed_in=true&libraries=visualization&callback=initMap">
 		</script>
-		<?php	
+<?php
 	}
 }
 
